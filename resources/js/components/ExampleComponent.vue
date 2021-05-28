@@ -22,7 +22,7 @@
                                     <div class="card" style="width: 5rem; position: absolute;　top:60%; left:5%;">
                                         <div style="background-color:rgb(255, 255, 128);">先発</div>
                                         <draggable group="pitchers">
-                                        <div v-for="startingPitcher in sp" :key="startingPitcher.id" class="list-group list-group-flush">{{startingPitcher}}</div>
+                                        <div v-for="startingPitcher in sp" :key="startingPitcher.id" class="list-group list-group-flush" >{{startingPitcher}}</div>
                                         </draggable>
                                     </div>
 
@@ -37,7 +37,7 @@
                                     <!-- 抑え -->
                                       <div class="card" style="width: 5rem; position: absolute;　top:90%; left:5%;">
                                             <div style="background-color:rgb(255, 255, 128);">抑え</div>
-                                            <draggable group="pitchers" @end="onEnd">
+                                            <draggable group="pitchers">
                                             <div v-for="closer in clo" :key="closer.id" class="list-group list-group-flush">{{closer}}</div>
                                             </draggable>
                                       </div>
@@ -117,7 +117,7 @@
                                 <div class="col-sm">
                                     <div class="card" style="width: 15rem;">
                                         <div class="card-header">投手</div>
-                                        <draggable group="pitchers" @end="onEnd">
+                                        <draggable group="pitchers"  v-model="pitcher"    @choose="onChoose">
                                             <div v-for="pitcherResult in pitcher" :key="pitcherResult.id" class="list-group list-group-flush">{{pitcherResult.name}}</div>
                                         </draggable>
                                     </div>
@@ -213,6 +213,9 @@ import Storage from 'vue-ls';
                      }
                 }
               },
+               onChoose (e) {
+              console.log('onChoose')
+          },
         
               
 
